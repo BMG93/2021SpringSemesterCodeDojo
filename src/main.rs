@@ -1,5 +1,6 @@
-use std::io;
+//use std::io;
 use rand::Rng;
+
 fn main() {
     
     println!("Let's play a game!");
@@ -8,9 +9,9 @@ fn main() {
     for guess in (1..13).rev() {
         println!("Guess the code!");
         println!(" Remaining Guess(es): {}", guess);
-        let mut rawguessinput = String::new();
+        //let mut rawguessinput = String::new();
         let mut guess_vec = Vec::new();
-
+/* no need for io when I am not inputting the guesses
             io::stdin()
             .read_line(&mut rawguessinput)
             .expect("Failed to read line");
@@ -19,7 +20,7 @@ fn main() {
             if let Some(digit) = character.to_digit(10) {
                 guess_vec.push(digit);
             }
-        }
+        } */
         println!("{:?} is the guess_vec", guess_vec);
         let mut colors_in_right_spot:u32 = 0;
         let mut colors_in_wrong_spot:u32 = 0;
@@ -35,6 +36,10 @@ fn main() {
         }
 
         println!("hint1: Matching colors in matching spots: {}", colors_in_right_spot);
+/*         if guess_vec != code {
+            println!("You didn't win!");
+            // remove the guess_vec from the list of possible guess vec's or remove them earlier as you try them if you are just using possible correct answers.
+        }; */
         if guess_vec == code {
             println!("You win!");
         };
