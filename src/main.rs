@@ -45,8 +45,3 @@ fn random_color() -> u32 {
     let a_random_color = rand::thread_rng().gen_range(1..6);
     a_random_color
     }
-
-
-//TODO: put numbers into an array that I can remove certain wrong answers from
-//TODO: save correct guess information to increase chances of finding right answer
-//TODO: can I win without a single random guess?
