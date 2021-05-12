@@ -1,6 +1,7 @@
 //use std::io;
 use rand::Rng;
-
+/* I am not sure yet of the best way to create a list of all guesses that is easily accessible still I'm wondering if I should treat each location in the code as a separate value and if that would be best for a struct. 
+ */
 fn main() {
     
     println!("Let's play a game!");
