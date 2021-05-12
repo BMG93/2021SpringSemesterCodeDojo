@@ -1,8 +1,11 @@
 use std::io;
 use rand::Rng;
 fn main() {
+    
     println!("Let's play a game!");
-    let mut code = vec!(random_color(), random_color(), random_color(), random_color());
+    let code = vec!(random_color(), random_color(), random_color(), random_color());
+    println!("{:?}",code);
+
     for guess in (1..13).rev() {
         println!("Guess the code!");
         println!(" Remaining Guess(es): {}", guess);
@@ -19,16 +22,28 @@ fn main() {
             }
         }
         println!("{:?} is the guess_vec", guess_vec);
-        let mut matchingcolors:u8 = 0;
+        let mut colors_in_right_spot:u32 = 0;
+        let mut colors_in_wrong_spot:u32 = 0;
+        let mut counter = 1;
+        while counter < 4 {
+            counter += 1;
+            if guess_vec[counter] == code[counter] {
+                colors_in_right_spot += 1;
+            };
+        };
         for n in guess_vec {
             for i in &code {
                 if n == *i {
-                    matchingcolors += 1;
-                }
-            }
-        }
-        println!("Matching colors: {}", matchingcolors);
-//        println!("Matching colors in matching spots: {}", colors_in_right_spot);
+                    colors_in_wrong_spot += 1;
+                };
+            };
+        };
+        colors_in_wrong_spot -= colors_in_right_spot; 
+        println!("hint1: Matching colors in matching spots: {}", colors_in_right_spot);
+        println!("hint2: Matching colors in wrong spot: {}", colors_in_wrong_spot);
+        if colors_in_right_spot == 4 {
+            println!("You Win!")
+        };
     }
 }
 fn random_color() -> u32 {
